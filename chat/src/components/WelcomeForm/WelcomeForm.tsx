@@ -1,5 +1,8 @@
 import styles from './WelcomeForm.module.scss';
+import 'react-toastify/dist/ReactToastify.css';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import { getAccountStatus } from '../../api/apiRequests';
 
 interface FormFields {
   idInstance: string;
@@ -15,8 +18,14 @@ export function WelcomeForm() {
     mode: 'onSubmit',
   });
 
-  const onSubmit: SubmitHandler<FormFields> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<FormFields> = async (data) => {
+    const accountStatus = await getAccountStatus(data.idInstance, data.apiTokenInstance);
+    if (!accountStatus || typeof accountStatus === 'string') {
+      toast.error(accountStatus);
+    } else if (accountStatus.stateInstance != 'authorized') {
+      toast.error(accountStatus.stateInstance);
+    }
+    console.log(accountStatus);
   };
 
   return (
