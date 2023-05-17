@@ -1,5 +1,7 @@
+import { WelcomePage } from './pages/WelcomePage/WelcomePage';
+
 function App() {
-  return <div>Hi!</div>;
+  return <WelcomePage />;
 }
 
 export default App;
