@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import styles from './MessageInput.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { addMessage } from '../../../../redux/store/chatSlice';
+import { addMessage, startChat } from '../../../../redux/store/chatSlice';
 import { sendMessage } from '../../../../api/apiRequests';
 import { RootState } from '../../../../redux/store';
 
@@ -18,13 +18,13 @@ export function MessageInput() {
 
   const onSubmit: SubmitHandler<{ message: string }> = async (data) => {
     if (idInstance && apiTokenInstance && chatId) {
-      const result = await sendMessage(idInstance, apiTokenInstance, {
+      await sendMessage(idInstance, apiTokenInstance, {
         chatId: chatId,
         message: data.message,
       });
-      console.log(result);
+      dispatch(startChat());
+      dispatch(addMessage({ isSenderMe: true, text: data.message }));
     }
-    dispatch(addMessage({ isSenderMe: true, text: data.message }));
   };
 
   return (
