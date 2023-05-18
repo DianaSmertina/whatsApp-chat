@@ -1,0 +1,7 @@
+.chat_space {
+  width: calc(80% - 10px);
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
