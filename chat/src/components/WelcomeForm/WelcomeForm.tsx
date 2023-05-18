@@ -3,6 +3,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { getAccountStatus } from '../../api/apiRequests';
+import { useNavigate } from 'react-router-dom';
 
 interface FormFields {
   idInstance: string;
@@ -17,6 +18,7 @@ export function WelcomeForm() {
   } = useForm<FormFields>({
     mode: 'onSubmit',
   });
+  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     const accountStatus = await getAccountStatus(data.idInstance, data.apiTokenInstance);
@@ -24,8 +26,9 @@ export function WelcomeForm() {
       toast.error(accountStatus);
     } else if (accountStatus.stateInstance != 'authorized') {
       toast.error(accountStatus.stateInstance);
+    } else if (accountStatus.stateInstance === 'authorized') {
+      navigate('/chat');
     }
-    console.log(accountStatus);
   };
 
   return (
