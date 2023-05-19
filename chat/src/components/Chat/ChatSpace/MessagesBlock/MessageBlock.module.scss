@@ -1,0 +1,47 @@
+@import '../../../../assets/styles/index.scss';
+
+.message_block {
+  height: 100%;
+  width: 100%;
+  background-image: url(../../../../assets/images/whatsapp.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  overflow: scroll;
+}
+
+.message {
+  display: inline-block;
+  min-height: 30px;
+  height: auto;
+  width: auto;
+  min-width: 100px;
+  max-width: 300px;
+  text-align: center;
+  word-wrap: break-word;
+  padding: 5px;
+  margin: 0 10px;
+  border-radius: 3px;
+}
+
+.my_message {
+  background-color: $my-message-color;
+}
+
+.reply_message {
+  background-color: $light-background-color;
+}
+
+.message_container {
+  margin-top: 10px;
+}
+
+.container_my {
+  display: flex;
+  justify-content: right;
+}
+
+.container_reply {
+  display: flex;
+  justify-content: left;
+}

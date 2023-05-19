@@ -1,0 +1,8 @@
+@import '../../assets/styles/index.scss';
+
+.container {
+  width: 90vw;
+  height: 90vh;
+  display: flex;
+  background-color: $default-background-color-light;
+}
