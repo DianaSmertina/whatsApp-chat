@@ -1,7 +1,7 @@
 import styles from './CreateNewChat.module.scss';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { setRecipient } from '../../../redux/store/chatSlice';
+import { clearMessages, setRecipient } from '../../../redux/store/chatSlice';
 
 export function CreateNewChat() {
   const {
@@ -18,6 +18,7 @@ export function CreateNewChat() {
         chatId: chatId,
       })
     );
+    dispatch(clearMessages());
   };
 
   return (
@@ -34,7 +35,9 @@ export function CreateNewChat() {
         <input type="submit" value="" className={styles.submit}></input>
       </form>
       {errors.phone && (
-        <div>Enter phone number with country code, no spaces or other characters</div>
+        <div className={styles.error}>
+          Enter phone number with country code, no spaces or other characters
+        </div>
       )}
     </div>
   );

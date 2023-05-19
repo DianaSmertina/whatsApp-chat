@@ -20,9 +20,6 @@ interface Reply {
 
 export function MessageBlock() {
   const messages = useSelector((state: RootState) => state.chat.messages);
-  const myMessages = useSelector((state: RootState) =>
-    state.chat.messages.filter((el) => el.isSenderMe === true)
-  );
   const idInstance = useSelector((state: RootState) => state.user.idInstance);
   const apiTokenInstance = useSelector((state: RootState) => state.user.apiTokenInstance);
   const dispatch = useDispatch();
@@ -63,7 +60,7 @@ export function MessageBlock() {
 
     const interval = setInterval(myFunction, 5000);
     return () => clearInterval(interval);
-  }, [myMessages]);
+  }, [messages]);
 
   return (
     <div className={styles.message_block}>

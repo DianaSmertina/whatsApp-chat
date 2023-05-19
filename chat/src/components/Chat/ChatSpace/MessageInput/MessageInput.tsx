@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addMessage } from '../../../../redux/store/chatSlice';
 import { sendMessage } from '../../../../api/apiRequests';
 import { RootState } from '../../../../redux/store';
+import { toast } from 'react-toastify';
 
 export function MessageInput() {
   const {
@@ -19,10 +20,15 @@ export function MessageInput() {
 
   const onSubmit: SubmitHandler<{ message: string }> = async (data) => {
     if (idInstance && apiTokenInstance && chatId) {
-      await sendMessage(idInstance, apiTokenInstance, {
+      const result = await sendMessage(idInstance, apiTokenInstance, {
         chatId: chatId,
         message: data.message,
       });
+      if (typeof result === 'string' && result.split(':')[0] === '466') {
+        toast.error('invalid number');
+      } else if (typeof result === 'string') {
+        toast.error(result);
+      }
       dispatch(addMessage({ isSenderMe: true, text: data.message }));
       reset();
     }
