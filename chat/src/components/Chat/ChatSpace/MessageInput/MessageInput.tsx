@@ -10,6 +10,7 @@ export function MessageInput() {
     register,
     formState: {},
     handleSubmit,
+    reset,
   } = useForm<{ message: string }>({ mode: 'onSubmit' });
   const dispatch = useDispatch();
   const idInstance = useSelector((state: RootState) => state.user.idInstance);
@@ -23,19 +24,21 @@ export function MessageInput() {
         message: data.message,
       });
       dispatch(addMessage({ isSenderMe: true, text: data.message }));
+      reset();
     }
   };
 
   return (
     <div className={styles.message_input}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <input
+          className={styles.input_text}
           placeholder="Enter message"
           {...register('message', {
             required: true,
           })}
         ></input>
-        <input type="submit" value="Send"></input>
+        <input type="submit" value="" className={styles.send}></input>
       </form>
     </div>
   );

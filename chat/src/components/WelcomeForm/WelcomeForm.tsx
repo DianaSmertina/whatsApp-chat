@@ -41,24 +41,32 @@ export function WelcomeForm() {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <input
-        placeholder="idInstance"
-        {...register('idInstance', {
-          required: true,
-        })}
-      />
-      {errors.idInstance && <div className={styles.error}>Please enter the idInstance</div>}
-      <input
-        placeholder="apiTokenInstance"
-        {...register('apiTokenInstance', {
-          required: true,
-        })}
-      ></input>
-      {errors.apiTokenInstance && (
-        <div className={styles.error}>Please enter the apiTokenInstance</div>
-      )}
-      <input type="submit" value="Submit"></input>
-    </form>
+    <div className={styles.form_container}>
+      <div className={styles.headers_block}>
+        <h1>Welcome to WhatsApp chat</h1>
+        <h2>To continue enter your idInstance and apiTokenInstance</h2>
+      </div>
+      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <input
+          className={styles.text_input}
+          placeholder="idInstance"
+          {...register('idInstance', {
+            required: true,
+          })}
+        />
+        {errors.idInstance && <div className={styles.error}>Please enter the idInstance</div>}
+        <input
+          className={styles.text_input}
+          placeholder="apiTokenInstance"
+          {...register('apiTokenInstance', {
+            required: true,
+          })}
+        ></input>
+        {errors.apiTokenInstance && (
+          <div className={styles.error}>Please enter the apiTokenInstance</div>
+        )}
+        <input type="submit" value="Submit" className="button"></input>
+      </form>
+    </div>
   );
 }

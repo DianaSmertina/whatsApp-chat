@@ -9,8 +9,10 @@ export function ChatPage() {
 
   return (
     <main className={styles.main}>
-      <CreateNewChat />
-      {chatId && <ChatSpace />}
+      <div className={styles.container}>
+        <CreateNewChat />
+        {chatId && <ChatSpace />}
+      </div>
     </main>
   );
 }

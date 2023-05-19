@@ -1,5 +1,42 @@
+@import '../../../assets/styles/index.scss';
+
 .container {
   width: 30%;
-  border: 1px solid black;
-  height: calc(100vh - 100px);
+  background-color: $light-background-color;
+  height: 100%;
+}
+
+.input_text {
+  width: calc(100% - 35px);
+  border: none;
+  background-color: $default-background-color;
+}
+
+.input_text:focus {
+  outline: none;
+}
+
+.input_text:valid {
+  background-color: $default-background-color;
+}
+
+.submit {
+  width: 25px;
+  height: 25px;
+  border: none;
+  outline: none;
+  background-color: $default-background-color;
+  background-size: 25px 25px;
+  background-image: url(../../../assets/icons/search-outline.svg);
+  margin: 0 5px;
+}
+
+.form {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  background-color: $default-background-color;
+  height: 50px;
+  border-radius: 5px;
+  margin: 5px;
 }

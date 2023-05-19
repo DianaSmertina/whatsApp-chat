@@ -22,19 +22,20 @@ export function CreateNewChat() {
 
   return (
     <div className={styles.container}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <input
+          className={styles.input_text}
           placeholder="Phone number"
           {...register('phone', {
             required: true,
             pattern: /^\d+$/,
           })}
         ></input>
-        {errors.phone && (
-          <div>Enter phone number with country code, no spaces or other characters</div>
-        )}
-        <input type="submit" value="Find user"></input>
+        <input type="submit" value="" className={styles.submit}></input>
       </form>
+      {errors.phone && (
+        <div>Enter phone number with country code, no spaces or other characters</div>
+      )}
     </div>
   );
 }

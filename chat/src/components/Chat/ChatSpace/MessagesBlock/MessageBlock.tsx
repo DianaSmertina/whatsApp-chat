@@ -69,8 +69,19 @@ export function MessageBlock() {
     <div className={styles.message_block}>
       {messages.map((el, i) => {
         return (
-          <div key={i} className={el.isSenderMe ? styles.me : styles.correspondent}>
-            {el.text}
+          <div
+            className={`${el.isSenderMe ? styles.container_my : styles.container_reply} ${
+              styles.message_container
+            }`}
+            key={i}
+          >
+            <div
+              className={`${el.isSenderMe ? styles.my_message : styles.reply_message} ${
+                styles.message
+              }`}
+            >
+              {el.text}
+            </div>
           </div>
         );
       })}
