@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import styles from './MessageInput.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { addMessage, startChat } from '../../../../redux/store/chatSlice';
+import { addMessage } from '../../../../redux/store/chatSlice';
 import { sendMessage } from '../../../../api/apiRequests';
 import { RootState } from '../../../../redux/store';
 
@@ -22,7 +22,6 @@ export function MessageInput() {
         chatId: chatId,
         message: data.message,
       });
-      dispatch(startChat());
       dispatch(addMessage({ isSenderMe: true, text: data.message }));
     }
   };
