@@ -6,3 +6,4 @@
 4. Run this project (in case you are using npm with the command `npm run dev` in terminal)
 
 #### Deploy: https://flourishing-lokum-1e76f3.netlify.app/
+#### Demo: https://drive.google.com/file/d/1o1ZRKVGh2vHQBfFU0o9s0yRAXn3rhcfi/view?usp=sharing
